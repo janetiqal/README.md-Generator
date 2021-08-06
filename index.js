@@ -1,86 +1,126 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const makeReadMe = (response)=>
-`# Name of Application
-    ${response.name}
+const makeReadMe = (response) =>
+    `# ${response.name}
  ## Description 
  ${response.description}
- 
- ## How to use the Application
-    ${response.howTo}
+
+ ## Table of Contents
+- [Usage](#usage)
+- [Installation](#installation)
+- [Features](#features)
+- [Collaboraters](#collaboraters)
+- [License](#license)
+- [Tests](#tests)
+- [Contributing](#contributing)
+- [Questions](#questions)
+
+## Installation
+    ${response.installation}
+ ## Usage
+    ${response.usage}
 ## Screenshot
-    ${response.imageURL ? response.imageURL : "N/A"}
-## Purpose and Features of the Application
+  ![Screenshot of application](./assets/images/${response.imageURL})
+## Features 
     ${response.features}
- ## Challenges Faced 
-    ${response.challenges}
 ## Collaboraters
     ${response.collaboraters ? response.collaboraters : "N/A"}
- ## License 
+## License 
     ${response.license}
- ### Created by ${response.createdBy}
+## Badges 
+## Tests
+    ${response.test ? response.test: "N/A"}
+## Contributing 
+    ${response.contribute}
+## Questions
+    If you have any questions or would like to discuss this application further, please reach out to me via email at ${response.email} or visit my github profile at [${response.userName}](http://www.github.com/${response.userName}).
+
+    ### Created by ${response.createdBy}
  ` ;
 
 
 inquirer
     .prompt([{
-        type:"input",
-        message:"What is the name of your Application or Project?",
+        type: "input",
+        message: "What is the name of your Application or Project?",
         name: "name",
+        validate: string => string.length > 0 ? true: "Must enter a project title."
+    },
+    {
+        type: "input",
+        message: "Provide a short description of your application.",
+        name: "description",
+        validate: string => string.length >= 15 ? true: "Must include a description longer than 15 characters"
+    },
+    {
+        type: "input",
+        message: "Describe how to use the app",
+        name: "usage"
+    },
+    {
+        type: "input",
+        message: "Describe how to install the app",
+        name: "installation"
+    },
+    {
+        type: "input",
+        message: "Include a screenshot of the working application.",
+        name: "imageURL"
+    },
+    {
+        type: "input",
+        message: "Describe the purpose of this app and features of the app",
+        name: "features"
+    },
+    {
+        type: "input",
+        message: "List your collaboraters",
+        name: "credits"
+    },
+    {
+        type: "input",
+        message: "Describe how users can contribute to this application or project",
+        name: "contribute"
+    },
+    {
+        type: "list",
+        message: "Do you want to include a license?",
+        name: "license",
+        choices: ["MIT", "Apache", "GNU", "ISC", "None"]
+    },
+    {
+        type: "input",
+        message: "Do you want to include tests in your README?",
+        name: "test",
+    },
+    {
+        type: "input",
+        message:"Enter your github username",
+        name:"userName",
+        //github usernames are min. 4 char. long
+        validate: string => string.length >= 4 ? true: "Your github username can not be less than 4 characters."
+
     },
     {
         type:"input",
-        message:"Provide a short description of your application.",
-        name: "description"
+        message:"Type in your email",
+        name:"email",
+        validate: string => string.length > 0 ? true: "You must include an email"
     },
     {
-        type:"input",
-        message:"Describe how to use the app",
-        name:"howTo"
-    },
-    {
-        type:"input",
-        message:"Include a screenshot of the working application.",
-        name:"imageURL"
-    },
-    {
-        type:"input",
-        message:"Describe the purpose of this app and features of the app",
-        name:"features"
-    },
-    {
-        type:"input",
-        message:"Did you face any challenges with creating this project?",
-        name:"challenges"
-    },
-    {
-        type:"input",
-        message:"List your collaboraters",
-        name:"credits"
-    },
-    {
-        type:"list",
-        message:"Do you want to include a license?",
-        name:"license",
-        choices:["MIT","Apache", "GNU","ISC", "None"]
-    },
-    {
-        type:"input",
+        type: "input",
         message: "Who was this created by?",
-        name:"createdBy"
+        name: "createdBy"
     }
-])
-.then((response)=>{
-    console.log(response)
-    var readMeString = makeReadMe(response);
-    fs.writeFile(`./${response.name}README.md`, readMeString, (err) =>  err ? console.error(err) : console.log('Commit logged!'));
-    
-})
+    ])
+    .then((response) => {
+        var readMeString = makeReadMe(response);
+        fs.writeFile(`./${response.name}README.md`, readMeString, (err) => err ? console.error(err) : console.log('Commit logged!'));
+
+    })
 
 
 //TO DO LIST:
-    // if user doesnt answer question: either prompt them to answer or do if else statement to write N/A as input in the corresponding field
     //look into opening the editor as a type 
-    // table of contents
     // license if yes: give badge and link to the license aggreement if no: return a string. 
