@@ -1,8 +1,11 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+var licenseIcon = "";
 
-const makeReadMe = (response) =>
-    `# ${response.name}
+const makeReadMe = (response) =>{
+ let licenseIcon = renderLicenseBadge(response.license);
+    return `# ${response.name}
+    ${licenseIcon}
  ## Description 
  ${response.description}
 
@@ -27,7 +30,8 @@ const makeReadMe = (response) =>
 ## Collaboraters
     ${response.collaboraters ? response.collaboraters : "N/A"}
 ## License 
-    ${response.license}
+    This project uses the ${response.license} license. 
+    ${licenseIcon}
 ## Badges 
 ## Tests
     ${response.test ? response.test: "N/A"}
@@ -36,12 +40,11 @@ const makeReadMe = (response) =>
 ## Questions
     If you have any questions or would like to discuss this application further, please reach out to me via email at ${response.email} or visit my github profile at [${response.userName}](http://www.github.com/${response.userName}).
 
-    ### Created by ${response.createdBy}
- ` ;
-
-
-inquirer
-    .prompt([{
+### Created by ${response.createdBy}
+ `} ;
+//function to initiliaze the program. 
+function init (){
+    inquirer.prompt([{
         type: "input",
         message: "What is the name of your Application or Project?",
         name: "name",
@@ -115,12 +118,32 @@ inquirer
     }
     ])
     .then((response) => {
-        var readMeString = makeReadMe(response);
-        fs.writeFile(`./${response.name}README.md`, readMeString, (err) => err ? console.error(err) : console.log('Commit logged!'));
-
+        writeToFile(response)
     })
+};
+//this function writes the MD file 
+function writeToFile(response) {
+    var readMeString = makeReadMe(response);
+    fs.writeFile(`./${response.name}README.md`, readMeString, (err) => err ? console.error(err) : console.log('MD file created'));
+}
+//license: credit to github user Lukas-h/license-badges.md repo for providing the links to the images for licenses.
+function renderLicenseBadge(license) {
+    if (license === "MIT"){
+        licenseIcon = "[![License: MIT][![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)"
+    }
+     else if (license === "Apache"){
+        licenseIcon = "[![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)"
+    }
+     else if (license === "GNU"){
+        licenseIcon = "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)"
+    }
+     else if (license === "ISC"){
+        licenseIcon = "[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)"
+    } else {
+         licenseIcon= "No license was used.";
+    }
+    return licenseIcon;
+}
+//calling the function to initiliaze the program
+init();
 
-
-//TO DO LIST:
-    //look into opening the editor as a type 
-    // license if yes: give badge and link to the license aggreement if no: return a string. 
