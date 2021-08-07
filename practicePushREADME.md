@@ -1,7 +1,7 @@
-# samplePush
-    [![License-GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# practicePush
+    ![License-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
  ## Description 
- skdfsjdlfkskdlfjsdfsd;fj
+ this is a pratice push to see if the license icons show up
 
  ## Table of Contents
 - [Usage](#usage)
@@ -24,8 +24,8 @@
 ## Collaboraters
     N/A
 ## License 
-    This project uses the GNU license. 
-    [![License-GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+    This project uses the MIT license. 
+    ![License-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ## Badges 
 ## Tests
     N/A
