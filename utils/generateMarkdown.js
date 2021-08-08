@@ -1,58 +1,54 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-var licenseIcon =  "";
-var licenseURL ="";
+var licenseIcon = "";
+var licenseURL = "";
 function renderLicenseBadge(license) { 
     if (license === "MIT"){
-        licenseIcon = `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`;       
+      licenseIcon = `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`;       
    }
     else if (license === "Apache"){
-     licenseIcon = `![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)`;
-   //   licenseURL = `[Apache](https://opensource.org/licenses/Apache-2.0)`;
-
+      licenseIcon = `![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)`;
    }
     else if (license === "GNU"){
-     licenseIcon =`![License: GPL-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)`
-       // licenseURL= `(https://www.gnu.org/licenses/gpl-3.0)`;
-
+     licenseIcon =`![License: GPL-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)`;
    }
     else if (license === "ISC"){
-        licenseIcon = `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)`
-       
-       // licenseURL= `(https://opensource.org/licenses/ISC)`;
-
-   } else {
+        licenseIcon = `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)`;
+   } 
+   else {
          licenseIcon= " ";
    }
    return licenseIcon;
 }
 
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+//returns the license link
 function renderLicenseLink(license) { 
     if (license === "MIT"){
-        licenseURL = `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`;       
+        licenseURL = `[MIT](https://opensource.org/licenses/MIT)`;       
    }
     else if (license === "Apache"){
           licenseURL = `[Apache](https://opensource.org/licenses/Apache-2.0)`;
    }
     else if (license === "GNU"){
-       licenseURL= `(https://www.gnu.org/licenses/gpl-3.0)`;
+       licenseURL= `[GNU](https://www.gnu.org/licenses/gpl-3.0)`;
    }
     else if (license === "ISC"){
-       licenseURL= `(https://opensource.org/licenses/ISC)`;
-}   else if (license ==="None"){
-    licenseURL= "";
-}
-    return licenseURL;
+       licenseURL= `[ISC](https://opensource.org/licenses/ISC)`;
+} //instead of returning an empty string,if no license is used. A string saying no license used is placed in the license section of readme
+ else if (license === "None"){
+    return licenseURL = renderLicenseSection(license);
+}//the statement isnt being returned, but the license URL is....?
+    return "This project is covered by the license of: " + licenseURL;
 };
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) { }
+// If there is no license, return a message saying so. 
+function renderLicenseSection(license) {
+    if (license ==="None"){
+        return "No license was used."
+    }
+ }
 
-// TODO: Create a function to generate markdown for README
+// The function that generates markdown for README
 function generateMarkdown(response) {
 
     renderLicenseBadge(response.license);
@@ -83,7 +79,7 @@ ${response.imageURL}
 ## Collaboraters
   ${response.collaboraters ? response.collaboraters : "N/A"}
 ## License 
-  This project is covered by the license of: ${renderLicenseLink(response.license)}. 
+  ${licenseURL}
 ## Badges 
 ## Tests
   ${response.test ? response.test : "N/A"}
