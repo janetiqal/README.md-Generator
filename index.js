@@ -1,47 +1,52 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-var licenseIcon = "";
+const generateMarkdown = require("./utils/generateMarkdown")
 
-const makeReadMe = (response) =>{
- let licenseIcon = renderLicenseBadge(response.license);
-    return `# ${response.name}
-    ${licenseIcon}
- ## Description 
- ${response.description}
 
- ## Table of Contents
-- [Usage](#usage)
-- [Installation](#installation)
-- [Features](#features)
-- [Collaboraters](#collaboraters)
-- [License](#license)
-- [Tests](#tests)
-- [Contributing](#contributing)
-- [Questions](#questions)
 
-## Installation
-    ${response.installation}
- ## Usage
-    ${response.usage}
-## Screenshot
-  ${response.imageURL}
-## Features 
-    ${response.features}
-## Collaboraters
-    ${response.collaboraters ? response.collaboraters : "N/A"}
-## License 
-    This project is covered by the license of: ${response.license}. 
-    ${licenseIcon}
-## Badges 
-## Tests
-    ${response.test ? response.test: "N/A"}
-## Contributing 
-    ${response.contribute}
-## Questions
-    If you have any questions or would like to discuss this application further, please reach out to me via email at ([${response.email}](mailto:${response.email})) or visit my github profile at [${response.userName}](http://www.github.com/${response.userName}).
+// const makeReadMe = (response) =>{
+//  let licenseIcon = renderLicenseBadge(response.license);
+//  let licenseURL = renderLicenseBadge(response.license);
 
-### Created by ${response.createdBy}
- `} ;
+//     return `${licenseIcon}
+//     # ${response.name}
+
+//  ## Description 
+//  ${response.description}
+
+//  ## Table of Contents
+// - [Usage](#usage)
+// - [Installation](#installation)
+// - [Features](#features)
+// - [Collaboraters](#collaboraters)
+// - [License](#license)
+// - [Tests](#tests)
+// - [Contributing](#contributing)
+// - [Questions](#questions)
+
+// ## Installation
+//     ${response.installation}
+//  ## Usage
+//     ${response.usage}
+// ## Screenshot
+//   ${response.imageURL}
+// ## Features 
+//     ${response.features}
+// ## Collaboraters
+//     ${response.collaboraters ? response.collaboraters : "N/A"}
+// ## License 
+//     This project is covered by the license of: [${licenseURL}](${response.license}). 
+//     ${licenseURL}
+// ## Badges 
+// ## Tests
+//     ${response.test ? response.test: "N/A"}
+// ## Contributing 
+//     ${response.contribute}
+// ## Questions
+//     If you have any questions or would like to discuss this application further, please reach out to me via email at ([${response.email}](mailto:${response.email})) or visit my github profile at [${response.userName}](http://www.github.com/${response.userName}).
+
+// ### Created by ${response.createdBy}
+//  `} ;
 //function to initiliaze the program. 
 function init (){
     inquirer.prompt([{
@@ -123,35 +128,10 @@ function init (){
 };
 //this function writes the MD file 
 function writeToFile(response) {
-    var readMeString = makeReadMe(response);
-    fs.writeFile(`./${response.name}README.md`, readMeString, (err) => err ? console.error(err) : console.log('MD file created'));
+    // var readMeString = generateMarkdown(response);
+    fs.writeFile(`./${response.name}README.md`,generateMarkdown(response) , (err) => err ? console.error(err) : console.log('MD file created'));
 }
-//license: credit to github user Lukas-h/license-badges.md repo for providing the links to the images for licenses.
-function renderLicenseBadge(license, licenseURL) {
-    if (license === "MIT"){
-        return licenseIcon = `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`;
-        //PASS licenseURL and create a new variable so tha tyou can link the licensing aggreement in the readme//first fig out why badge isnt showin up as icons.
-    }
-     else if (license === "Apache"){
-        return licenseIcon = `![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)`;
-        // `(https://opensource.org/licenses/Apache-2.0)`;
 
-    }
-     else if (license === "GNU"){
-        return licenseIcon =`![License: GPL-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)`
-        // `(https://www.gnu.org/licenses/gpl-3.0)`;
-
-    }
-     else if (license === "ISC"){
-        return licenseIcon = `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)`
-        
-        // `(https://opensource.org/licenses/ISC)`;
-
-    } else {
-         return licenseIcon= " ";
-    }
-    // return licenseIcon;
-}
 //calling the function to initiliaze the program
 init();
 
