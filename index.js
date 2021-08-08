@@ -30,7 +30,7 @@ const makeReadMe = (response) =>{
 ## Collaboraters
     ${response.collaboraters ? response.collaboraters : "N/A"}
 ## License 
-    This project uses the ${response.license} license. 
+    This project is covered by the license of: ${response.license}. 
     ${licenseIcon}
 ## Badges 
 ## Tests
@@ -129,24 +129,28 @@ function writeToFile(response) {
 //license: credit to github user Lukas-h/license-badges.md repo for providing the links to the images for licenses.
 function renderLicenseBadge(license, licenseURL) {
     if (license === "MIT"){
-        licenseIcon = `![License-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)`;
+        return licenseIcon = `![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)`;
         //PASS licenseURL and create a new variable so tha tyou can link the licensing aggreement in the readme//first fig out why badge isnt showin up as icons.
     }
      else if (license === "Apache"){
-        licenseIcon = `[![License-Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+        return licenseIcon = `![License: Apache](https://img.shields.io/badge/License-Apache%202.0-blue.svg)`;
+        // `(https://opensource.org/licenses/Apache-2.0)`;
 
     }
      else if (license === "GNU"){
-        licenseIcon =`[![License-GPL-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`;
+        return licenseIcon =`![License: GPL-v3](https://img.shields.io/badge/License-GPLv3-blue.svg)`
+        // `(https://www.gnu.org/licenses/gpl-3.0)`;
 
     }
      else if (license === "ISC"){
-        licenseIcon = `[![License-ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`;
+        return licenseIcon = `![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)`
+        
+        // `(https://opensource.org/licenses/ISC)`;
 
     } else {
-         licenseIcon= "No license was used.";
+         return licenseIcon= " ";
     }
-    return licenseIcon;
+    // return licenseIcon;
 }
 //calling the function to initiliaze the program
 init();
