@@ -21,47 +21,54 @@ function renderLicenseBadge(license) {
    return licenseIcon;
 }
 
-//returns the license link
+//returns the license hyperlink in the license section. 
 function renderLicenseLink(license) { 
     if (license === "MIT"){
-        licenseURL = `[MIT](https://opensource.org/licenses/MIT)`;       
+        licenseURL = `This project is covered by the license of: [MIT](https://opensource.org/licenses/MIT)`;       
    }
     else if (license === "Apache"){
-          licenseURL = `[Apache](https://opensource.org/licenses/Apache-2.0)`;
+          licenseURL = `This project is covered by the license of: [Apache](https://opensource.org/licenses/Apache-2.0)`;
    }
     else if (license === "GNU"){
-       licenseURL= `[GNU](https://www.gnu.org/licenses/gpl-3.0)`;
+       licenseURL= `This project is covered by the license of: [GNU](https://www.gnu.org/licenses/gpl-3.0)`;
    }
     else if (license === "ISC"){
-       licenseURL= `[ISC](https://opensource.org/licenses/ISC)`;
+       licenseURL= `This project is covered by the license of: [ISC](https://opensource.org/licenses/ISC)`;
 } //instead of returning an empty string,if no license is used. A string saying no license used is placed in the license section of readme
  else if (license === "None"){
-    return licenseURL = renderLicenseSection(license);
+   //used to return this section.
+     licenseURL = renderLicenseSection(license);
 }//the statement isnt being returned, but the license URL is....?
-    return "This project is covered by the license of: " + licenseURL;
+    // return "This project is covered by the license of:" + licenseURL;
+    return licenseURL;
 };
 
 // If there is no license, return a message saying so. 
 function renderLicenseSection(license) {
     if (license ==="None"){
-        return "No license was used."
-    }
+      return "No license was used."
+    } 
+    // else {
+    //   return `This project is covered by the license of: ${licenseURL}`;
+    // }
  }
-
 // The function that generates markdown for README
 function generateMarkdown(response) {
-
     renderLicenseBadge(response.license);
     renderLicenseLink(response.license);
-    return ` ${response.name} </br></br>
-    ${licenseIcon}
+  
+    return ` # ${response.name} </br>
+  
 ## Description 
+${licenseIcon} </br>
 ${response.description}
 
 ## Table of Contents
-- [Usage](#usage)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Features](#features)
+- [Demo](#demo)
+- [ScreenShot](#screenshot)
 - [Collaboraters](#collaboraters)
 - [License](#license)
 - [Tests](#tests)
@@ -72,25 +79,26 @@ ${response.description}
   ${response.installation}
 ## Usage
   ${response.usage}
-## Screenshot
-${response.imageURL}
 ## Features 
   ${response.features}
+## Demo Video
+  [Demo Video](${response.demo ? response.demo: "N/A"})
+## Screenshot
+<img src="${response.imageURL}" alt="screenshot of application"/> </br>
+${response.confirmimageURL2}
+
 ## Collaboraters
   ${response.collaboraters ? response.collaboraters : "N/A"}
 ## License 
   ${licenseURL}
-## Badges 
 ## Tests
   ${response.test ? response.test : "N/A"}
 ## Contributing 
-  ${response.contribute}
+  ${response.contribute ? response.contribute : "N/A"}
 ## Questions
   If you have any questions or would like to discuss this application further, please reach out to me via email at [${response.email}](mailto:${response.email}) or visit my github profile at [${response.userName}](http://www.github.com/${response.userName}).
 
 ### Created by ${response.createdBy}
 `};
-
-
 
 module.exports = generateMarkdown;

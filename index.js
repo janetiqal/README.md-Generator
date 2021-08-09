@@ -26,8 +26,26 @@ const questions = [{
 },
 {
     type: "input",
+    message: "Include the link to the demo video.",
+    name: "demo"
+},
+{
+    type: "input",
     message: "Include a screenshot of the working application.",
-    name: "imageURL"
+    name: "imageURL",
+    default: "./images/SCReadme1.png"
+},
+{
+    type: "confirm",
+    message: "Do you want to include another screenshot?",
+    name: "imageURL2",
+},
+{//asks the user if they want to add another screenshot to their readme. 
+    type: "input",
+    message:"Insert next screenshot url or path",
+    name:"confirmimageURL2",
+    default: "./images/SCReadme2.png",
+    when: response => response.imageURL2 === true,
 },
 {
     type: "input",
@@ -74,10 +92,17 @@ const questions = [{
     message: "Who was this created by?",
     name: "createdBy"
 }];
+
 //function to initiliaze the program. 
 function init (){
     inquirer.prompt(questions)
     .then((response) => {
+        if(response.imageURL2 = true){
+            response.confirmimageURL2 =`<img src="${response.confirmimageURL2}" alt="screenshot of application"/>`
+        }else {
+            //this returns undefined. in the format as <img src="undefined"...
+            response.confirmimageURL2 ="";
+        }
         writeToFile(response)
     })
 };
