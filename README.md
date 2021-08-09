@@ -2,7 +2,7 @@
   
 ## Description 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg) </br>
-This application generates a good README markdown file using the command line by using node.js and the inquirer package.
+This application dynamically generates a good README markdown file using the command line by using Node.js and the Inquirer Package.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -17,14 +17,14 @@ This application generates a good README markdown file using the command line by
 - [Questions](#questions)
 
 ## Installation
-  run npm i then node index.js in the terminal.
+  Run npm i then node index.js in the terminal.
 ## Usage
   Open index.js in the integrated terminal and run node index.js
 ## Features 
-  To generate good README files so users can better focus on coding better projects.
+  This application will give users the option to not sacrifice coding hours in order to create a thorough README. 
 ## Demo Video
   Full video link to demo [here](https://drive.google.com/file/d/1g3L_BXFhcPYMHs2HKLuRUfNGHAVWicDQ/view?usp=sharing). </br> 
-  [Demo](https://drive.google.com/file/d/19sSx5MBntZu8GuYbzwtsbJnsO3nAjTcJ/view?usp=sharing)
+  ![Demo](./images/demo.gif)
 ## Screenshot
 <img src="./images/SCReadme1.png" alt="screenshot of application"/> </br>
 <img src="./images/SCReadme2.png" alt="screenshot of application"/>
@@ -36,7 +36,7 @@ This application generates a good README markdown file using the command line by
 ## Tests
   N/A
 ## Contributing 
-  It is an open source project, please reach out.
+  It is an open source project, please contact me to be added as a contributor.
 ## Questions
   If you have any questions or would like to discuss this application further, please reach out to me via email at [j.iqal35@gmail.com](mailto:j.iqal35@gmail.com) or visit my github profile at [janetiqal](http://www.github.com/janetiqal).
 
