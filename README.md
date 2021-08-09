@@ -25,6 +25,7 @@ This application dynamically generates a good README markdown file using the com
 ## Demo Video
   Full video link to demo [here](https://drive.google.com/file/d/1g3L_BXFhcPYMHs2HKLuRUfNGHAVWicDQ/view?usp=sharing). </br> 
   ![Demo](./images/demo.gif)
+  ![Demo](./images/Edited ReadmeFile demo.gif)
 ## Screenshot
 <img src="./images/SCReadme1.png" alt="screenshot of application"/> </br>
 <img src="./images/SCReadme2.png" alt="screenshot of application"/>
