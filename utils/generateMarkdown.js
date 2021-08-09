@@ -36,10 +36,8 @@ function renderLicenseLink(license) {
        licenseURL= `This project is covered by the license of: [ISC](https://opensource.org/licenses/ISC)`;
 } //instead of returning an empty string,if no license is used. A string saying no license used is placed in the license section of readme
  else if (license === "None"){
-   //used to return this section.
      licenseURL = renderLicenseSection(license);
-}//the statement isnt being returned, but the license URL is....?
-    // return "This project is covered by the license of:" + licenseURL;
+}
     return licenseURL;
 };
 
@@ -48,9 +46,6 @@ function renderLicenseSection(license) {
     if (license ==="None"){
       return "No license was used."
     } 
-    // else {
-    //   return `This project is covered by the license of: ${licenseURL}`;
-    // }
  }
 // The function that generates markdown for README
 function generateMarkdown(response) {

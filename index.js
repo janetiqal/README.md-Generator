@@ -97,11 +97,10 @@ const questions = [{
 function init (){
     inquirer.prompt(questions)
     .then((response) => {
-        //bc the second screenshot is a question and returns boolean i created an if else statement.
-        if(response.imageURL2 = true){
+        //bc the second screenshot is a question and returns boolean i created an if else statement, if true a new img tag is created, else it is blank.
+        if(response.imageURL2 === true){
             response.confirmimageURL2 =`<img src="${response.confirmimageURL2}" alt="screenshot of application"/>`
         }else {
-            //this returns undefined. in the format as <img src="undefined"...
             response.confirmimageURL2 ="";
         }
         writeToFile(response)
