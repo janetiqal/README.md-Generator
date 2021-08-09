@@ -23,7 +23,7 @@ This application generates a good README markdown file using the command line by
 ## Features 
   To generate good README files so users can better focus on coding better projects.
 ## Demo Video
-  Full video link to demo [here](https://drive.google.com/file/d/1g3L_BXFhcPYMHs2HKLuRUfNGHAVWicDQ/view.). </br> 
+  Full video link to demo [here](https://drive.google.com/file/d/1g3L_BXFhcPYMHs2HKLuRUfNGHAVWicDQ/view?usp=sharing). </br> 
   [Demo Video](https://drive.google.com/file/d/19sSx5MBntZu8GuYbzwtsbJnsO3nAjTcJ/view?usp=sharing)
 ## Screenshot
 <img src="./images/SCReadme1.png" alt="screenshot of application"/> </br>
