@@ -29,7 +29,7 @@ const questions = [{
     message: "Include the link to the demo video.",
     name: "demo"
 },
-{
+{//users can override the default image by putting in whatever link or path. 
     type: "input",
     message: "Include a screenshot of the working application.",
     name: "imageURL",
@@ -97,6 +97,7 @@ const questions = [{
 function init (){
     inquirer.prompt(questions)
     .then((response) => {
+        //bc the second screenshot is a question and returns boolean i created an if else statement.
         if(response.imageURL2 = true){
             response.confirmimageURL2 =`<img src="${response.confirmimageURL2}" alt="screenshot of application"/>`
         }else {
