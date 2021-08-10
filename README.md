@@ -23,7 +23,7 @@ This application dynamically generates a good README markdown file using the com
 ## Features 
   This application will give users the option to not sacrifice coding hours in order to create a thorough README. 
 ## Demo Video
-  Full video link to demo [here](https://drive.google.com/file/d/1g3L_BXFhcPYMHs2HKLuRUfNGHAVWicDQ/view?usp=sharing). </br> 
+  Full video link to demo [here](https://drive.google.com/file/d/1PlXUMDcurqYXWeG7o9UWpkgmEQNtXiTE/view?usp=sharing). </br> 
   ![Demo](./images/demo.gif)
   
 ## Screenshot
