@@ -8,6 +8,7 @@ This application dynamically generates a good README markdown file using the com
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Technologies](#technologies)
 - [Demo](#demo)
 - [ScreenShot](#screenshot)
 - [Collaboraters](#collaboraters)
@@ -22,6 +23,9 @@ This application dynamically generates a good README markdown file using the com
   Open index.js in the integrated terminal and run node index.js
 ## Features 
   This application will give users the option to not sacrifice coding hours in order to create a thorough README. 
+## Technologies
+- Node.js
+- Node package Inquirer
 ## Demo Video
   Full video link to demo [here](https://drive.google.com/file/d/1PlXUMDcurqYXWeG7o9UWpkgmEQNtXiTE/view?usp=sharing). </br> 
   ![Demo](./images/demo.gif)
